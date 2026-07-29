@@ -1,0 +1,60 @@
+.dice-row {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(70px, 1fr));
+  gap: 10px;
+}
+
+.die {
+  font: inherit;
+  border: 1px solid rgba(107, 79, 26, 0.4);
+  border-radius: 14px;
+  background: linear-gradient(160deg, #fffdfa 0%, #f7ebd2 100%);
+  min-height: 92px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.die:hover:enabled {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(62, 47, 15, 0.2);
+}
+
+.die.held {
+  border-color: #196b5e;
+  background: linear-gradient(160deg, #def8f3 0%, #b6eadf 100%);
+}
+
+.die:disabled {
+  opacity: 0.68;
+  cursor: not-allowed;
+}
+
+.pip {
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.die-meta {
+  font-size: 0.82rem;
+}
+
+@media (max-width: 760px) {
+  .dice-row {
+    grid-template-columns: repeat(5, minmax(54px, 1fr));
+    gap: 7px;
+  }
+
+  .die {
+    min-height: 80px;
+  }
+
+  .pip {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,33 @@
+.totals-panel {
+  margin-top: 14px;
+}
+
+.totals-panel h2 {
+  margin: 0 0 8px;
+}
+
+.totals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.total-card {
+  border: 1px solid rgba(91, 70, 30, 0.24);
+  border-radius: 12px;
+  background: #fffdf8;
+  padding: 10px;
+}
+
+.total-card h3 {
+  margin: 0 0 8px;
+}
+
+.total-card p {
+  margin: 2px 0;
+}
+
+.grand {
+  margin-top: 8px !important;
+  font-weight: 800;
+}

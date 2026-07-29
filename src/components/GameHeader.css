@@ -1,0 +1,86 @@
+.hero-panel {
+  border-radius: 18px;
+  padding: 18px;
+  background: linear-gradient(135deg, #123d37 0%, #235b4f 46%, #be9150 100%);
+  color: #fbf8ef;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+}
+
+.hero-panel h1 {
+  margin: 8px 0 6px;
+  font-size: clamp(2.1rem, 5vw, 3.1rem);
+  line-height: 1;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 62ch;
+}
+
+.controls {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.controls select,
+.controls button {
+  font: inherit;
+  border: 1px solid rgba(8, 8, 8, 0.2);
+  border-radius: 10px;
+  padding: 9px 12px;
+  background: #fff9ec;
+  color: #242012;
+}
+
+.controls button {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.player-config-list {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.player-config-card {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 8px;
+}
+
+.player-config-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.86rem;
+}
+
+.player-config-card input {
+  border: 1px solid rgba(8, 8, 8, 0.2);
+  border-radius: 8px;
+  padding: 6px 8px;
+  background: #fff9ec;
+  color: #242012;
+  font: inherit;
+}
