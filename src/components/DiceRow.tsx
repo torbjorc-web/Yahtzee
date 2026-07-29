@@ -8,6 +8,7 @@ interface DiceRowProps {
   gameOver: boolean
   isAiTurn: boolean
   rollFxTick: number
+  rollFxIndices: number[]
   onToggleHold: (index: number) => void
 }
 
@@ -27,6 +28,7 @@ export default function DiceRow({
   gameOver,
   isAiTurn,
   rollFxTick,
+  rollFxIndices,
   onToggleHold,
 }: DiceRowProps) {
   const [isRollingFx, setIsRollingFx] = useState(false)
@@ -52,7 +54,9 @@ export default function DiceRow({
         <button
           key={`die-${index}`}
           type="button"
-          className={`${held[index] ? 'die held' : 'die'} ${isRollingFx ? `rolling roll-${index}` : ''}`}
+          className={`${held[index] ? 'die held' : 'die'} ${
+            isRollingFx && rollFxIndices.includes(index) ? `rolling roll-${index}` : ''
+          }`}
           onClick={() => onToggleHold(index)}
           disabled={!hasRolled || gameOver || isAiTurn}
           aria-pressed={held[index]}
