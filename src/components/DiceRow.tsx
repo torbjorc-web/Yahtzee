@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { FACE_LABELS } from '../game/constants'
 import './DiceRow.css'
 
 interface DiceRowProps {
@@ -10,6 +9,15 @@ interface DiceRowProps {
   isAiTurn: boolean
   rollFxTick: number
   onToggleHold: (index: number) => void
+}
+
+const FACE_DOT_CELLS: Record<number, number[]> = {
+  1: [5],
+  2: [1, 9],
+  3: [1, 5, 9],
+  4: [1, 3, 7, 9],
+  5: [1, 3, 5, 7, 9],
+  6: [1, 3, 4, 6, 7, 9],
 }
 
 export default function DiceRow({
@@ -49,7 +57,13 @@ export default function DiceRow({
           disabled={!hasRolled || gameOver || isAiTurn}
           aria-pressed={held[index]}
         >
-          <span className="pip">{FACE_LABELS[value - 1]}</span>
+          <span className="die-face" aria-hidden="true">
+            {Array.from({ length: 9 }, (_, cellIndex) => {
+              const cell = cellIndex + 1
+              const active = FACE_DOT_CELLS[value]?.includes(cell)
+              return <span key={cell} className={active ? 'pip-dot on' : 'pip-dot off'} />
+            })}
+          </span>
           <span className="die-meta">{held[index] ? 'Held' : 'Tap to hold'}</span>
         </button>
       ))}
