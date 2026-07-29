@@ -44,6 +44,74 @@
   font-size: 0.82rem;
 }
 
+.die.rolling {
+  animation: die-roll 0.56s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.die.rolling .pip {
+  animation: pip-flash 0.56s ease;
+}
+
+.die.roll-0 {
+  animation-delay: 0ms;
+}
+
+.die.roll-1 {
+  animation-delay: 40ms;
+}
+
+.die.roll-2 {
+  animation-delay: 80ms;
+}
+
+.die.roll-3 {
+  animation-delay: 120ms;
+}
+
+.die.roll-4 {
+  animation-delay: 160ms;
+}
+
+@keyframes die-roll {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    box-shadow: 0 0 0 rgba(62, 47, 15, 0);
+  }
+  28% {
+    transform: translateY(-4px) rotate(-6deg) scale(1.04);
+    box-shadow: 0 10px 16px rgba(62, 47, 15, 0.24);
+  }
+  58% {
+    transform: translateY(3px) rotate(5deg) scale(0.98);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    box-shadow: 0 0 0 rgba(62, 47, 15, 0);
+  }
+}
+
+@keyframes pip-flash {
+  0% {
+    opacity: 0.65;
+    transform: scale(0.92);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .die.rolling,
+  .die.rolling .pip {
+    animation: none;
+  }
+}
+
 @media (max-width: 760px) {
   .dice-row {
     grid-template-columns: repeat(5, minmax(54px, 1fr));

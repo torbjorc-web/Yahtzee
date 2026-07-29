@@ -46,7 +46,7 @@ VITE_FIREBASE_PROJECT_ID=...
 VITE_FIREBASE_APP_ID=...
 ```
 
-5. Start app:
+1. Start app:
 
 ```bash
 npm run game

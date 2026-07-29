@@ -111,9 +111,11 @@ function App() {
   const [onlineRoomCodeInput, setOnlineRoomCodeInput] = useState('')
   const [onlineError, setOnlineError] = useState('')
   const [onlineReady, setOnlineReady] = useState(false)
+  const [rollFxTick, setRollFxTick] = useState(0)
 
   const gameOverLoggedRef = useRef(false)
   const importFileRef = useRef<HTMLInputElement | null>(null)
+  const previousRollsUsedRef = useRef(0)
 
   const effectivePlayers = gameMode === 'online' && onlineRoom ? onlineRoom.state.players : players
   const effectiveCurrentPlayer =
@@ -451,6 +453,13 @@ function App() {
     .sort((a, b) => b.total - a.total)
 
   useEffect(() => {
+    if (effectiveRollsUsed > previousRollsUsedRef.current) {
+      setRollFxTick((previous) => previous + 1)
+    }
+    previousRollsUsedRef.current = effectiveRollsUsed
+  }, [effectiveRollsUsed])
+
+  useEffect(() => {
     savePersistedState({
       playerCount,
       players,
@@ -717,6 +726,7 @@ function App() {
         hasRolled={hasRolled}
         gameOver={gameOver}
         isAiTurn={isAiTurn || (gameMode === 'online' && !isMyOnlineTurn)}
+        rollFxTick={rollFxTick}
         onToggleHold={toggleHold}
       />
 
